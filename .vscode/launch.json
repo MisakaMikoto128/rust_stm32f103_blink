@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Cortex Debug",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}\\target\\thumbv7m-none-eabi\\debug\\app",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "showDevDebugOutput": "none",
+            "runToEntryPoint": "main",
+            "device": "STM32F103C8",
+            "preLaunchTask": "flash",
+            "configFiles": [
+                "openocd.cfg"
+            ],
+            "svdFile": "STM32F103xx.svd",
+            "rttConfig": {
+                "enabled": true,
+                "address": "auto",
+                "clearSearch": false,
+                "polling_interval": 20,
+                "rtt_start_retry": 2000,
+                "decoders": [
+                    {
+                        "label": "RTT channel 0",
+                        "port": 0,
+                        "type": "console"
+                    }
+                ]
+            },
+        }
+    ]
+}

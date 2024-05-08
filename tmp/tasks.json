@@ -1,0 +1,31 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Cargo Build (debug)",
+            "type": "process",
+            "command": "cargo",
+            "args": [
+                "build"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "flash",
+            "group": "build",
+            "type": "shell",
+            "command": "openocd -f openocd.cfg -c \"program target\\thumbv7m-none-eabi\\debug\\app verify reset exit\"",
+            "dependsOn": [
+                "Cargo Build (debug)"
+            ],
+            "problemMatcher": "$gcc",
+            "dependsOrder": "sequence"
+        },
+    ]
+}

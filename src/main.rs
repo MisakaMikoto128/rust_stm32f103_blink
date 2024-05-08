@@ -44,10 +44,8 @@ fn main() -> ! {
 
     // Wait for the timer to trigger an update and change the state of the LED
     loop {
-        block!(timer.wait()).unwrap();
-        led.set_high();
-        
-        block!(timer.wait()).unwrap();
-        led.set_low();
+        led.toggle();
     }
+
+    // rust点灯的话运行一次io反转用时是C语言的3倍,C语言使用的是armcc6 19编译器，测试Ofast和Oimagesize,Obalances都是500ns，rust还没有搞清楚怎么编译优化，使用的是默认的release选项
 }
